@@ -60,21 +60,32 @@
 			max-width: 100%;
 			height: auto;
 		}
-
+		.btn-prev,
 		.btn-next {
 			position: absolute;
 			top: 50%;
-			right: 10px;
 			transform: translateY(-50%);
-			background-color: #0B3D91;
-			color: white;
+			background: none;
 			border: none;
-			padding: 10px 20px;
 			cursor: pointer;
-			font-size: 18px;
-			border-radius: 5px;
+			padding: 0;
+			z-index: 10;
 		}
 
+		.btn-prev img,
+		.btn-next img {
+			width: 50px;
+			height: 50px;
+		}
+
+		.btn-prev {
+			left: 10px;
+		}
+
+		.btn-next {
+			right: 10px;
+		}
+		
 		#footer {
 			padding: 20px;
 			background-color: #f2f2f2;
@@ -117,7 +128,9 @@
 				$mysqli->close();
 				?>
 			</div>
-			<button class="btn-next" onclick="nextSlide()">➡</button>
+			<button class="btn-next" onclick="nextSlide()"><img src="Defiler Droite.png" alt="suivant"></button>
+			<button class="btn-prev" onclick="prevSlide()"><img src="Defiler Gauche.png" alt="précédent"></button>
+
 		</div>
 
 		<div id="footer">
@@ -132,9 +145,18 @@
 		const slide = document.getElementById('carouselSlide');
 		const total = slide.children.length;
 
+		function updateSlide() {
+			slide.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
+		}
+
 		function nextSlide() {
 			slideIndex = (slideIndex + 1) % total;
-			slide.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
+			updateSlide();
+		}
+
+		function prevSlide() {
+			slideIndex = (slideIndex - 1 + total) % total;
+			updateSlide();
 		}
 	</script>
 </body>
