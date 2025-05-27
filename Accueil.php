@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style-header.css">
 	<title>Omnes Immobilier</title>
 
 	<style>
@@ -10,29 +11,17 @@
 			margin: 0;
 			padding: 0;
 			font-family: Arial, sans-serif;
-			background-color: #fff;
+			background-color: white;
 			width: 100%;
 		}
 
 		.wrapper {
+			max-width: 1200px;
+			margin: 0 auto;
+			background-color: white;
+			min-height: 100vh;
 			display: flex;
 			flex-direction: column;
-			width: 100%;
-			max-width: 1000px;
-			min-height: 100vh;
-			margin: 0 auto;
-		}
-
-		#nav {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			background-color: #e0e0e0;
-			padding: 10px 0;
-		}
-
-		#nav a {
-			margin: 0 10px;
 		}
 
 		.carousel-container {
@@ -85,7 +74,7 @@
 		.btn-next {
 			right: 10px;
 		}
-		
+
 		#footer {
 			padding: 20px;
 			background-color: #f2f2f2;
@@ -96,15 +85,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<img src="LogoOmnesImmo.png" width="100%" alt="Logo Omnes Immobilier">
-
-		<div id="nav">
-			<a href="Accueil.php"><img src="Bouton barre header/Frame 1.png" height="50" alt="Accueil"></a>
-			<a href="Parcourir.php"><img src="Bouton barre header/Frame 2.png" height="50" alt="Parcourir"></a>
-			<a href="Recherche.php"><img src="Bouton barre header/Frame 3.png" height="50" alt="Recherche"></a>
-			<a href="Rendezvous.php"><img src="Bouton barre header/Frame 4.png" height="50" alt="Rendez-vous"></a>
-			<a href="Votrecompte.php"><img src="Bouton barre header/Frame 5.png" height="50" alt="Votre compte"></a>
-		</div>
+    	<?php include 'header.php'; ?>
 
 		<div class="carousel-container">
 			<div class="carousel-slide" id="carouselSlide">
@@ -119,8 +100,12 @@
 					echo '<div class="card">';
 					echo '<h2>' . htmlspecialchars($bien['categorie']) . ' - ' . $bien['surface'] . ' m²</h2>';
 					echo '<img src="' . htmlspecialchars($bien['photo']) . '" alt="Photo du bien">';
-					echo '<p><strong>Pièces :</strong> ' . htmlspecialchars($bien['pieces']) . '</p>';
-					echo '<p><strong>Chambres :</strong> ' . htmlspecialchars($bien['chambres']) . '</p>';
+					
+					if ($bien['categorie'] === 'Immobilier résidentiel') {
+						echo '<p><strong>Pièces :</strong> ' . htmlspecialchars($bien['pieces']) . '</p>';
+						echo '<p><strong>Chambres :</strong> ' . htmlspecialchars($bien['chambres']) . '</p>';
+					}
+
 					echo '<p><strong>Prix :</strong> ' . number_format($bien['prix'], 0, ',', ' ') . ' €</p>';
 					echo '<p><strong>Adresse :</strong> ' . htmlspecialchars($bien['adresse']) . '</p>';
 					echo '</div>';
@@ -134,7 +119,7 @@
 		</div>
 
 		<div id="footer">
-			Copyright &copy; 2024 Omnes Immobilier<br>
+			Copyright &copy; 2025 Omnes Immobilier<br>
 			<a href="mailto:omnesimmobilier@gmail.com">omnesimmobilier@gmail.com</a><br>
 			<p>+33 01 02 03 04 05 / +33 01 10 11 12 13</p>
 		</div>
