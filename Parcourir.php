@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style-header.css">
 	<title>Parcourir - Omnes Immobilier</title>
 
 	<style>
@@ -20,23 +21,6 @@
 			min-height: 100vh;
 			display: flex;
 			flex-direction: column;
-		}
-
-		#nav {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			background-color: #e0e0e0;
-			padding: 10px;
-		}
-
-		#nav a {
-			margin: 0 20px;
-			text-decoration: none;
-		}
-
-		#nav img {
-			height: 50px;
 		}
 
 		.grid {
@@ -73,23 +57,15 @@
 		#footer {
 			padding: 20px;
 			background-color: #f2f2f2;
-			text-align: center;
 			font-size: 14px;
+			text-align: center;
 		}
 	</style>
 </head>
 <body>
 	<div class="wrapper">
-		<img src="LogoOmnesImmo.png" width="100%" alt="Logo Omnes Immobilier">
-
-		<div id="nav">
-			<a href="Accueil.php"><img src="Bouton barre header/Frame 1.png" alt="Accueil"></a>
-			<a href="Parcourir.php"><img src="Bouton barre header/Frame 2.png" alt="Parcourir"></a>
-			<a href="Recherche.php"><img src="Bouton barre header/Frame 3.png" alt="Recherche"></a>
-			<a href="Rendezvous.php"><img src="Bouton barre header/Frame 4.png" alt="Rendez-vous"></a>
-			<a href="Votrecompte.php"><img src="Bouton barre header/Frame 5.png" alt="Votre compte"></a>
-		</div>
-
+	    <?php include 'header.php'; ?>
+	
 		<div class="grid">
 			<?php
 			$mysqli = new mysqli("localhost", "root", "", "omnes_immobilier");
@@ -110,9 +86,9 @@
 		</div>
 
 		<div id="footer">
-			Copyright &copy; 2024 Omnes Immobilier<br>
-			<a href="mailto:omnesimmobilier@gmail.com">omnesimmobilier@gmail.com</a><br>
-			<p>+33 01 02 03 04 05 / +33 01 10 11 12 13</p>
+			Copyright &copy; 2025 Omnes Immobilier<br>
+			<a href="mailto:aaron.wipliez@edu.ece.fr">aaron.wipliez@edu.ece.fr</a><br>
+			<p>+33 06 33 78 63 73</p>
 		</div>
 	</div>
 </body>
