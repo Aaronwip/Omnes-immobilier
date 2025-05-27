@@ -1,0 +1,75 @@
+.header {
+    background-color: #D9D9D9;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    background-color: #D9D9D9;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header img {
+    height: 70px;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    background-color: #D9D9D9;
+    padding: 10px;
+    width: 100%;
+}
+
+.nav-btn {
+    display: block;
+    height: 30px;
+    width: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-indent: -9999px;
+    transition: background-image 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Accueil */
+.nav-btn.accueil {
+    background-image: url('Bouton barre header/Frame 1.png');
+}
+.nav-btn.accueil:hover {
+    background-image: url('Bouton barre header/Frame 6.png');
+}
+
+/* Parcourir */
+.nav-btn.parcourir {
+    background-image: url('Bouton barre header/Frame 2.png');
+}
+.nav-btn.parcourir:hover {
+    background-image: url('Bouton barre header/Frame 7.png');
+}
+
+/* Recherche */
+.nav-btn.recherche {
+    background-image: url('Bouton barre header/Frame 3.png');
+}
+.nav-btn.recherche:hover {
+    background-image: url('Bouton barre header/Frame 8.png');
+}
+
+/* Rendez-vous */
+.nav-btn.rendezvous {
+    background-image: url('Bouton barre header/Frame 4.png');
+}
+.nav-btn.rendezvous:hover {
+    background-image: url('Bouton barre header/Frame 10.png');
+}
+
+/* Compte */
+.nav-btn.compte {
+    background-image: url('Bouton barre header/Frame 5.png');
+}
+.nav-btn.compte:hover {
+    background-image: url('Bouton barre header/Frame 9.png');
+}
