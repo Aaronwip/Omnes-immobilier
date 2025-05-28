@@ -1,6 +1,8 @@
 <?php
 session_start();
+$categorie = isset($_POST['categorie']) ? $_POST['categorie'] : '';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -81,29 +83,120 @@ session_start();
             min-width: 300px;
             max-width: 800px;
         }
+
+        /*Taille du formulaire*/
+		.trier {
+		  max-width: 800px;       
+		  margin: 20px auto;      
+		  padding: 20px;          
+		  background: #f9f9f9;    
+		  border: 1px solid #ddd; 
+		  border-radius: 8px;
+		}
+
+		
+		
+
+		/*Taille des éléments du form*/
+		.trier select,
+		.trier input[type="submit"] {
+		  width: 100%;       
+		  padding: 10px;     
+		  margin-top: 5px;   
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  font-size: 1rem;
+		}
+
+
+		/*style du bouton*/
+		.trier input[type="submit"] {
+		  background-color: #1e3a8a; /* ton bleu site */
+		  color: #fff;
+		  cursor: pointer;
+		  transition: background .2s;
+		}
+
+		.trier input[type="submit"]:hover {
+		  background-color: #162c6b;
+		}
+
+
+        
 	</style>
 </head>
 <body>
+
+
 	<div class="wrapper">
 	    <?php include 'header.php'; ?>
+
+	    			<div class="container">
+
+			    <form action="" method="post" class="trier">
+			      <table class="centered-table">
+
+			        <tr>
+			          <td>Quelle catégorie de bien vous intéresse en particulier ?</td>
+
+
+			          <!--formulaire pour trier les biens en fontctoin de leur catégorie-->
+			          <td>
+			            <select name="categorie" required>
+						  <option value="">Trier par :</option>
+						  <option value="Immobilier résidentiel" <?= ($categorie == 'Immobilier résidentiel') ? 'selected' : '' ?>>Immobilier résidentiel</option>
+						  <option value="Immobilier commercial" <?= ($categorie == 'Immobilier commercial') ? 'selected' : '' ?>>Immobilier commercial</option>
+						  <option value="Terrain" <?= ($categorie == 'Terrain') ? 'selected' : '' ?>>Terrain</option>
+						  <option value="Appartement à louer" <?= ($categorie == 'Appartement à louer') ? 'selected' : '' ?>>Appartement à louer</option>
+						  <option value="Immobilier en vente par enchère" <?= ($categorie == 'Immobilier en vente par enchère') ? 'selected' : '' ?>>Immobilier en vente par enchère</option>
+						</select>
+
+
+			          </td>
+
+			          <td><input type="submit" value="Trier"></td>
+
+			        </tr>
+
+			      </table>
+			    </form>
+
+			  </div>
 	
 		<div class="grid">
+			<!--php pour trier les biens en fontctoin de leur catégorie-->
 			<?php
-			$mysqli = new mysqli("localhost", "root", "", "omnes_immobilier");
-			if ($mysqli->connect_error) {
-				die("Erreur de connexion : " . $mysqli->connect_error);
-			}
+				$mysqli = new mysqli("localhost", "root", "", "omnes_immobilier");
+				$categorie = $mysqli->real_escape_string($categorie);
 
-			$result = $mysqli->query("SELECT * FROM biens ORDER BY id_bien ASC");
-			while ($bien = $result->fetch_assoc()) {
-				echo '<div class="card">';
-				echo '<img src="' . htmlspecialchars($bien['photo']) . '" alt="Photo du bien">';
-				echo '<p><strong>' . number_format($bien['prix'], 0, ',', ' ') . ' €</strong></p>';
-				echo '<p>Surface : ' . htmlspecialchars($bien['surface']) . ' m²</p>';
-				echo '</div>';
-			}
-			$mysqli->close();
+				if ($mysqli->connect_error) {
+					die("Erreur de connexion : " . $mysqli->connect_error);
+				}
+
+				$categorie = isset($_POST['categorie']) ? $mysqli->real_escape_string($_POST['categorie']) : '';
+
+				if (!empty($categorie)) {
+					$query = "SELECT * FROM biens WHERE categorie = '$categorie' ORDER BY id_bien ASC";
+				} else {
+					$query = "SELECT * FROM biens ORDER BY id_bien ASC";
+				}
+
+				$result = $mysqli->query($query);
+				if (!$result) {
+				    echo "Erreur dans la requête : " . $mysqli->error;
+				}
+				while ($bien = $result->fetch_assoc()) {
+					echo '<div class="card">';
+					echo '<img src="' . htmlspecialchars($bien['photo']) . '" alt="Photo du bien">';
+					echo '<p><strong>' . number_format($bien['prix'], 0, ',', ' ') . ' €</strong></p>';
+					echo '<p>Surface : ' . htmlspecialchars($bien['surface']) . ' m²</p>';
+					echo '</div>';
+				}
+				$mysqli->close();
 			?>
+
+
+			
 		</div>
 
 		<div id="footer">
