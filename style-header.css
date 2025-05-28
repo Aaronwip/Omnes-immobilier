@@ -6,6 +6,7 @@
     background-color: #D9D9D9;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0;
 }
 
 .header img {

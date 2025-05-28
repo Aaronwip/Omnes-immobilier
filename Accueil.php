@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -76,11 +80,28 @@
 		}
 
 		#footer {
-			padding: 20px;
-			background-color: #f2f2f2;
-			font-size: 14px;
-			text-align: center;
-		}
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: #f2f2f2;
+            font-size: 14px;
+            text-align: left;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-colonne-gauche {
+            flex: 1;
+            font-size: 16px;
+            min-width: 250px;
+        }
+
+        .footer-colonne-droite {
+            flex: 1;
+            min-width: 300px;
+            max-width: 800px;
+        }
 	</style>
 </head>
 <body>
@@ -119,10 +140,19 @@
 		</div>
 
 		<div id="footer">
-			Copyright &copy; 2025 Omnes Immobilier<br>
-			<a href="mailto:omnesimmobilier@gmail.com">omnesimmobilier@gmail.com</a><br>
-			<p>+33 01 02 03 04 05 / +33 01 10 11 12 13</p>
-		</div>
+        <div class="footer-colonne-gauche">
+            <p>Copyright &copy; 2025 Omnes Immobilier</p>
+            <p><a href="mailto:aaron.wipliez@edu.ece.fr">aaron.wipliez@edu.ece.fr</a></p>
+            <p>+33 06 33 78 63 73</p>
+        </div>
+        <div class="footer-colonne-droite">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.2109797866384!2d2.285401276723513!3d48.849283500895236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671439c2b03a5%3A0x49ebfb04d1b51a5d!2s10%20Rue%20Sextius%20Michel%2C%2075015%20Paris!5e0!3m2!1sfr!2sfr!4v1716898664727!5m2!1sfr!2sfr"
+                width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
 	</div>
 
 	<script>
