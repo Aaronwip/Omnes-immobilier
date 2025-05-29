@@ -148,7 +148,7 @@ $categorie = isset($_POST['categorie']) ? $_POST['categorie'] : '';
 						  <option value="Immobilier commercial" <?= ($categorie == 'Immobilier commercial') ? 'selected' : '' ?>>Immobilier commercial</option>
 						  <option value="Terrain" <?= ($categorie == 'Terrain') ? 'selected' : '' ?>>Terrain</option>
 						  <option value="Appartement à louer" <?= ($categorie == 'Appartement à louer') ? 'selected' : '' ?>>Appartement à louer</option>
-						  <option value="Immobilier en vente par enchère" <?= ($categorie == 'Immobilier en vente par enchère') ? 'selected' : '' ?>>Immobilier en vente par enchère</option>
+						  <option value="Immobiliers en vente par enchère" <?= ($categorie == 'Immobiliers en vente par enchère') ? 'selected' : '' ?>>Immobiliers en vente par enchère</option>
 						</select>
 
 
