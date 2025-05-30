@@ -108,7 +108,7 @@ session_start();
 	<div class="wrapper">
     	<?php include 'header.php'; ?>
 
-		<div class="carousel-container">
+		<div id="carousel" class="carousel-container">
 			<div class="carousel-slide" id="carouselSlide">
 				<?php
 				$mysqli = new mysqli("localhost", "root", "", "omnes_immobilier");
@@ -156,6 +156,8 @@ session_start();
 	</div>
 
 	<script>
+		//php pour faire défiler les slides du carousel #1
+		document.addEventListener("DOMContentLoaded", function () {
 		let slideIndex = 0;
 		const slide = document.getElementById('carouselSlide');
 		const total = slide.children.length;
@@ -173,6 +175,17 @@ session_start();
 			slideIndex = (slideIndex - 1 + total) % total;
 			updateSlide();
 		}
+
+		//php pour faire défiler les slides du carousel #2
+		setInterval(() => {
+			nextSlide();
+		}, 3000);
+
+		document.querySelector('.btn-next').addEventListener('click', nextSlide);
+		document.querySelector('.btn-prev').addEventListener('click', prevSlide);
+	});
 	</script>
+
 </body>
 </html>
+		
