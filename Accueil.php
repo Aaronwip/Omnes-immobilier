@@ -32,6 +32,7 @@ session_start();
 			position: relative;
 			width: 100%;
 			overflow: hidden;
+			height: 700px;
 		}
 
 		.carousel-slide {
@@ -51,7 +52,7 @@ session_start();
 
 		.card img {
 			max-width: 100%;
-			height: auto;
+			height: 500px;
 		}
 		.btn-prev,
 		.btn-next {
@@ -108,6 +109,8 @@ session_start();
 	<div class="wrapper">
     	<?php include 'header.php'; ?>
 
+    	 
+
 		<div id="carousel" class="carousel-container">
 			<div class="carousel-slide" id="carouselSlide">
 				<?php
@@ -156,7 +159,7 @@ session_start();
 	</div>
 
 	<script>
-		//php pour faire défiler les slides du carousel #1
+		//javaS pour faire défiler les slides du carousel #1
 		document.addEventListener("DOMContentLoaded", function () {
 		let slideIndex = 0;
 		const slide = document.getElementById('carouselSlide');
@@ -176,7 +179,7 @@ session_start();
 			updateSlide();
 		}
 
-		//php pour faire défiler les slides du carousel #2
+		//javaS pour faire défiler les slides du carousel #2
 		setInterval(() => {
 			nextSlide();
 		}, 3000);
