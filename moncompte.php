@@ -156,7 +156,17 @@ if ($user['role'] === 'agent') {
                 <p><strong>Spécialité :</strong> <?= htmlspecialchars($specialite) ?></p>
             <?php endif; ?>
 
-            <a href="logout.php" class="nav-btn logout <?= $currentPage == 'votrecompte.php' ? 'active' : '' ?>">Déconnexion</a>
+            <?php if ($user['role'] === 'admin'): ?>
+                <h2>Mon espace de gestion</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                    <a href="gestion_agents.php" style="flex: 1 1 200px; text-align: center; background-color: #0B3D91; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold;">Gestion des agents</a>
+                    <a href="gestion_biens.php" style="flex: 1 1 200px; text-align: center; background-color: #0B3D91; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold;">Gestion des biens</a>
+                    <a href="gestion_clients.php" style="flex: 1 1 200px; text-align: center; background-color: #0B3D91; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold;">Gestion des clients</a>
+                    <a href="historique_ventes.php" style="flex: 1 1 200px; text-align: center; background-color: #0B3D91; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold;">Historique des ventes</a>
+                </div>
+            <?php endif; ?>
+
+            <br><a href="logout.php" class="nav-btn logout <?= $currentPage == 'votrecompte.php' ? 'active' : '' ?>">Déconnexion</a>
         </div>
 
         <?php if ($user['role'] === 'agent' && $photoAgent): ?>
