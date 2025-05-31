@@ -5,82 +5,112 @@ session_start();
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style-header.css">
-	<title>Omnes Immobilier</title>
+         <!-- Dernier CSS compilé et minifié --> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+  
+    <!-- Bibliothèque jQuery --> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+ 
+    <!-- Dernier JavaScript compilé --> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Omnes Immobilier</title>
 
-	<style>
-		html, body {
-			margin: 0;
-			padding: 0;
-			font-family: Arial, sans-serif;
-			background-color: white;
-			width: 100%;
-		}
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            width: 100%;
+        }
 
-		.wrapper {
-			max-width: 1200px;
-			margin: 0 auto;
-			background-color: white;
-			min-height: 100vh;
-			display: flex;
-			flex-direction: column;
-		}
+        .wrapper {
+        width: 100%;
+        background-color: white;
+        }
+        
+        .contenu {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        }
 
-		.carousel-container {
-			position: relative;
-			width: 100%;
-			overflow: hidden;
-			height: 700px;
-		}
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            height: 700px;
+        }
 
-		.carousel-slide {
-			display: flex;
-			width: 100%;
-			transition: transform 0.5s ease-in-out;
-		}
+        .carousel-slide {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
 
-		.card {
-			min-width: 100%;
-			box-sizing: border-box;
-			padding: 20px;
-			border: 1px solid #ccc;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-			text-align: center;
-		}
+        .card {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
 
-		.card img {
-			max-width: 100%;
-			height: 500px;
-		}
-		.btn-prev,
-		.btn-next {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			background: none;
-			border: none;
-			cursor: pointer;
-			padding: 0;
-			z-index: 10;
-		}
+        .card img {
+        max-width: 100%;
+        height: 400px !important;
+        object-fit: cover;
+        }
 
-		.btn-prev img,
-		.btn-next img {
-			width: 50px;
-			height: 50px;
-		}
+        .btn-prev,
+        .btn-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
 
-		.btn-prev {
-			left: 10px;
-		}
+        .btn-prev img,
+        .btn-next img {
+            width: 50px;
+            height: 50px;
+        }
 
-		.btn-next {
-			right: 10px;
-		}
+        .btn-prev {
+            left: 10px;
+        }
 
-		#footer {
+        .btn-next {
+            right: 10px;
+        }
+        .btn-consulter {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #0B3D91;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-consulter:hover {
+            background-color: #062a63;
+        }
+
+
+        #footer {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -103,46 +133,91 @@ session_start();
             min-width: 300px;
             max-width: 800px;
         }
-	</style>
+
+
+        .article {
+          color: inherit;         
+          text-decoration: none;  
+        }
+
+        .article:hover {
+          text-decoration: none; 
+        }
+
+
+    
+
+    </style>
 </head>
 <body>
-	<div class="wrapper">
-    	<?php include 'header.php'; ?>
+    <div class="wrapper">
+        <?php include 'header.php'; ?>
 
-    	 
+        <div class="contenu">
 
-		<div id="carousel" class="carousel-container">
-			<div class="carousel-slide" id="carouselSlide">
-				<?php
-				$mysqli = new mysqli("localhost", "root", "", "omnes_immobilier");
-				if ($mysqli->connect_error) {
-					die("Erreur de connexion : " . $mysqli->connect_error);
-				}
+        <div class="evenement"> 
+           <div class="row">
+            <div class="col-sm-6">
+                <!--article -->
+            <a href="article.php?id=1"  class="article" style="display: block;">
+                <h2><strong>Ne manquez pas les Portes Ouvertes d’Omnes Immobilier !</strong></h2>
+                 <p>Du 1er au 3 juin, de 10h à 19h, découvrez une large sélection de biens : appartements, locaux commerciaux, terrains, ventes aux enchères… Nos agents seront présents pour vous accueillir, vous conseiller et vous accompagner dans tous vos projets immobiliers.</p>
+            </a>
+            </div>
 
-				$result = $mysqli->query("SELECT * FROM biens ORDER BY id_bien ASC");
-				while ($bien = $result->fetch_assoc()) {
-					echo '<div class="card">';
-					echo '<h2>' . htmlspecialchars($bien['categorie']) . ' - ' . $bien['surface'] . ' m²</h2>';
-					echo '<img src="' . htmlspecialchars($bien['photo']) . '" alt="Photo du bien">';
-					
-					if ($bien['categorie'] === 'Immobilier résidentiel') {
-						echo '<p><strong>Pièces :</strong> ' . htmlspecialchars($bien['pieces']) . '</p>';
-						echo '<p><strong>Chambres :</strong> ' . htmlspecialchars($bien['chambres']) . '</p>';
-					}
+             <!--recherche -->
+              <div class="col-sm-6" style="padding: 20px;">
+                <form action="Recherche.php" method="POST" class="form-recherche">
+                    <label for="critere">Critère :</label>
+                    <select name="critere" required class="form-control">
+                        <option value="agent">Nom d'agent</option>
+                        <option value="bien">Numéro de bien</option>
+                        <option value="ville">Ville ou commune</option>
+                    </select>
 
-					echo '<p><strong>Prix :</strong> ' . number_format($bien['prix'], 0, ',', ' ') . ' €</p>';
-					echo '<p><strong>Adresse :</strong> ' . htmlspecialchars($bien['adresse']) . '</p>';
-					echo '</div>';
-				}
-				$mysqli->close();
-				?>
-			</div>
-			<button class="btn-next" onclick="nextSlide()"><img src="Defiler Droite.png" alt="suivant"></button>
-			<button class="btn-prev" onclick="prevSlide()"><img src="Defiler Gauche.png" alt="précédent"></button>
+                    <label for="recherche">Rechercher :</label>
+                    <input type="text" name="recherche" class="form-control" placeholder="Tapez votre recherche" required>
 
-		</div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Rechercher</button>
+                </form>
+            </div>
+            </div>
+ 
+        </div>
 
-		<div id="footer">
+        <div id="carousel" class="carousel-container">
+            <div class="carousel-slide" id="carouselSlide">
+                <?php
+                $mysqli = new mysqli("localhost", "root", "", "omnes_immobilier");
+                if ($mysqli->connect_error) {
+                    die("Erreur de connexion : " . $mysqli->connect_error);
+                }
+
+                $result = $mysqli->query("SELECT * FROM biens ORDER BY id_bien ASC");
+                while ($bien = $result->fetch_assoc()) {
+                    echo '<div class="card">';
+                    echo '<h2>' . htmlspecialchars($bien['categorie']) . ' - ' . $bien['surface'] . ' m²</h2>';
+                    echo '<img src="' . htmlspecialchars($bien['photo']) . '" alt="Photo du bien">';
+                    if ($bien['categorie'] === 'Immobilier résidentiel') {
+                        echo '<p><strong>Pièces :</strong> ' . htmlspecialchars($bien['pieces']) . '</p>';
+                        echo '<p><strong>Chambres :</strong> ' . htmlspecialchars($bien['chambres']) . '</p>';
+                    }
+                    echo '<p><strong>Prix :</strong> ' . number_format($bien['prix'], 0, ',', ' ') . ' €</p>';
+                    echo '<p><strong>Adresse :</strong> ' . htmlspecialchars($bien['adresse']) . '</p>';
+                    echo '<a href="bien.php?id=' . $bien['id_bien'] . '" class="btn-consulter">Voir le bien</a>';
+                    echo '</div>';
+
+                }
+                $mysqli->close();
+                ?>
+            </div>
+            <button class="btn-next" onclick="nextSlide()"><img src="Defiler Droite.png" alt="suivant"></button>
+            <button class="btn-prev" onclick="prevSlide()"><img src="Defiler Gauche.png" alt="précédent"></button>
+
+        </div>
+        </div>
+
+        <div id="footer">
         <div class="footer-colonne-gauche">
             <p>Copyright &copy; 2025 Omnes Immobilier</p>
             <p><a href="mailto:aaron.wipliez@edu.ece.fr">aaron.wipliez@edu.ece.fr</a></p>
@@ -156,39 +231,38 @@ session_start();
             </iframe>
         </div>
     </div>
-	</div>
+    </div>
 
-	<script>
-		//javaS pour faire défiler les slides du carousel #1
-		document.addEventListener("DOMContentLoaded", function () {
-		let slideIndex = 0;
-		const slide = document.getElementById('carouselSlide');
-		const total = slide.children.length;
+    <script>
+        //php pour faire défiler les slides du carousel #1
+        document.addEventListener("DOMContentLoaded", function () {
+        let slideIndex = 0;
+        const slide = document.getElementById('carouselSlide');
+        const total = slide.children.length;
 
-		function updateSlide() {
-			slide.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
-		}
+        function updateSlide() {
+            slide.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
+        }
 
-		function nextSlide() {
-			slideIndex = (slideIndex + 1) % total;
-			updateSlide();
-		}
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % total;
+            updateSlide();
+        }
 
-		function prevSlide() {
-			slideIndex = (slideIndex - 1 + total) % total;
-			updateSlide();
-		}
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + total) % total;
+            updateSlide();
+        }
 
-		//javaS pour faire défiler les slides du carousel #2
-		setInterval(() => {
-			nextSlide();
-		}, 3000);
+        //php pour faire défiler les slides du carousel #2
+        setInterval(() => {
+            nextSlide();
+        }, 3000);
 
-		document.querySelector('.btn-next').addEventListener('click', nextSlide);
-		document.querySelector('.btn-prev').addEventListener('click', prevSlide);
-	});
-	</script>
+        document.querySelector('.btn-next').addEventListener('click', nextSlide);
+        document.querySelector('.btn-prev').addEventListener('click', prevSlide);
+    });
+    </script>
 
 </body>
 </html>
-		
