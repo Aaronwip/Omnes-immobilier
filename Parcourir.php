@@ -21,13 +21,17 @@ $categorie = isset($_POST['categorie']) ? $_POST['categorie'] : '';
 		}
 
 		.wrapper {
-			max-width: 1200px;
-			margin: 0 auto;
-			background-color: #fff;
-			min-height: 100vh;
-			display: flex;
-			flex-direction: column;
-		}
+        width: 100%;
+        background-color: white;
+        }
+        
+        .contenu {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        }
 
 		.grid {
 			display: grid;
@@ -121,6 +125,28 @@ $categorie = isset($_POST['categorie']) ? $_POST['categorie'] : '';
 		  background-color: #162c6b;
 		}
 
+		/*Enlever l'effet lien*/
+		.card a {
+		  text-decoration: none;
+		  color: inherit;
+		  display: block;
+		}
+		.card a:hover {
+		  text-decoration: none;
+		  color: inherit;
+		}
+
+			a.card {
+  		text-decoration: none;
+ 	 	color: inherit;
+  		display: block;
+		}
+
+		a.card:hover {
+	  	text-decoration: none;
+	  	color: inherit;
+		}
+
 
         
 	</style>
@@ -131,8 +157,8 @@ $categorie = isset($_POST['categorie']) ? $_POST['categorie'] : '';
 	<div class="wrapper">
 	    <?php include 'header.php'; ?>
 
-	    			<div class="container">
-
+	    <div class="contenu">
+	    		<div class="container">
 			    <form action="" method="post" class="trier">
 			      <table class="centered-table">
 
@@ -184,19 +210,23 @@ $categorie = isset($_POST['categorie']) ? $_POST['categorie'] : '';
 				$result = $mysqli->query($query);
 				if (!$result) {
 				    echo "Erreur dans la requête : " . $mysqli->error;
-				}
+				}					//lien vers la page bien
+
 				while ($bien = $result->fetch_assoc()) {
-					echo '<div class="card">';
-					echo '<img src="' . htmlspecialchars($bien['photo']) . '" alt="Photo du bien">';
-					echo '<p><strong>' . number_format($bien['prix'], 0, ',', ' ') . ' €</strong></p>';
-					echo '<p>Surface : ' . htmlspecialchars($bien['surface']) . ' m²</p>';
-					echo '</div>';
+					//lien vers la page bien avec
+
+				    echo '<a href="bien.php?id=' . $bien['id_bien'] . '" class="card" style="…">';
+				    echo    '<img src="' . htmlspecialchars($bien['photo']) . '" alt="Photo du bien">';
+				    echo    '<p><strong>' . number_format($bien['prix'], 0, ',', ' ') . ' €</strong></p>';
+				    echo    '<p>Surface : ' . htmlspecialchars($bien['surface']) . ' m²</p>';
+				    echo '</a>';
 				}
+
 				$mysqli->close();
 			?>
 
 
-			
+		</div>
 		</div>
 
 		<div id="footer">
