@@ -66,12 +66,16 @@ $biens = $mysqli->query("SELECT * FROM biens ORDER BY id_bien ASC");
         }
 
         .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        width: 100%;
+        background-color: white;
+        }
+        
+        .contenu {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
         }
 
         .contenu {
